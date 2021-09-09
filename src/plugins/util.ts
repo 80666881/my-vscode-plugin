@@ -116,13 +116,6 @@ const util = {
         return { row: 0, col: 0 };
     },
     /**
-     * 获取某个字符串在文件里第一次出现位置的范围，
-     */
-    getStrRangeInFile: function (filePath:string, str:RegExp) {
-        var pos = this.findStrInFile(filePath, str);
-        return new vscode.Range(new vscode.Position(pos.row, pos.col), new vscode.Position(pos.row, pos.col + str.length));
-    },
-    /**
      * 简单的检测版本大小
      */
     checkVersion: function (version1:string, version2:string) {
@@ -165,19 +158,6 @@ const util = {
             // 这里有待完善，还不知道如何finder中如何选中文件
             exec(`open ${filePath}`);
         }
-    },
-    /**
-     * 在vscode中打开某个文件
-     * @param {*} path 文件绝对路径
-     * @param {*} text 可选，如果不为空，则选中第一处匹配的对应文字
-     */
-    openFileInVscode: function (path:string, text:RegExp) {
-        let options = undefined;
-        if (text) {
-            const selection = this.getStrRangeInFile(path, text);
-            options = { selection };
-        }
-        vscode.window.showTextDocument(vscode.Uri.file(path), options);
     },
     /**
      * 用JD-GUI打开jar包
