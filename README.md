@@ -7,3 +7,9 @@ https://github.com/sxei/vscode-plugin-demo
 需要下载
 npm install --save @types/node
 
+启动
+npm install
+npm run watch
+
+然后启动debug
+
